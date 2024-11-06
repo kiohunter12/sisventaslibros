@@ -92,7 +92,7 @@
             <img class="object-cover w-full rounded-md h-72 xl:h-80"
               [src]="getImageUrl(book.imagenUrl)" alt="{{ book.titulo }}">
             <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">{{ book.titulo }}</h4>
-            <p class="text-blue-500">${{ book.precio }}</p>
+            <p class="text-blue-500">S/.{{ book.precio }}</p>
             <span class="uppercase text-xs bg-green-50 p-0.5 border-green-500 border rounded text-green-700 font-medium select-none">
               {{ book.stock > 0 ? 'En stock' : 'No hay stock' }}
             </span>
