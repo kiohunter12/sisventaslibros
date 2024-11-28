@@ -20,7 +20,7 @@ public class Venta {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
-    private Integer userId;
+    private String userId;
     private double total;
     private double igv;
     private double totalConIgv;

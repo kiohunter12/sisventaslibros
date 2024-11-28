@@ -17,7 +17,7 @@ public interface AuthUserService {
     public TokenDto validate(String token);
 
 
-    Integer getUserIdFromToken(String token);
+    String getUserIdFromToken(String token);
     List<AuthUser> listarUsuarios();
     boolean eliminarUsuario(Integer id);
 }
