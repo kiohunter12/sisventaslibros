@@ -39,15 +39,27 @@ public class AuthUserController {
     }
 
     @GetMapping("/userId")
-    public ResponseEntity<String> getUserId(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<Integer> getUserId(@RequestHeader("Authorization") String token) {
         // Eliminar el prefijo "Bearer " si está presente
         if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
-        String userId = authUserService.getUserIdFromToken(token);
+        Integer userId = authUserService.getUserIdFromToken(token);
         if (userId == null) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(userId);
+    }
+    @GetMapping("/userName")
+    public ResponseEntity<String> getUserName(@RequestHeader("Authorization") String token) {
+        // Eliminar el prefijo "Bearer " si está presente
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        String userName = authUserService.getUserNameFromToken(token);
+        if (userName == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(userName);
     }
 }

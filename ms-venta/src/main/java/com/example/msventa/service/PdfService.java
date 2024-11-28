@@ -56,10 +56,10 @@ public class PdfService {
         cell.setBorder(Rectangle.NO_BORDER);
         tableInfo.addCell(cell);
 
-        cell = new PdfPCell(new Paragraph("Usuario ID:"));
+        cell = new PdfPCell(new Paragraph("Usuario:"));
         cell.setBorder(Rectangle.NO_BORDER);
         tableInfo.addCell(cell);
-        cell = new PdfPCell(new Paragraph(String.valueOf(venta.getUserId())));
+        cell = new PdfPCell(new Paragraph(String.valueOf(venta.getUserName())));
         cell.setBorder(Rectangle.NO_BORDER);
         tableInfo.addCell(cell);
 

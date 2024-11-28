@@ -5,6 +5,7 @@ import com.example.msauth.entity.AuthUser;
 import com.example.msauth.entity.TokenDto;
 
 import com.example.msauth.repository.AuthUserRepository;
+import com.example.msauth.repository.AuthUserRepository;
 import com.example.msauth.security.JwtProvider;
 import com.example.msauth.service.AuthUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,15 @@ public class AuthUserServiceImpl implements AuthUserService {
     }
 
     @Override
-    public String getUserIdFromToken(String token) {
+    public Integer getUserIdFromToken(String token) {
+        if (!jwtProvider.validate(token))
+            return null;
+        String username = jwtProvider.getUserNameFromToken(token);
+        Optional<AuthUser> user = authRepository.findByUserName(username);
+        return user.map(AuthUser::getId).orElse(null);
+    }
+    @Override
+    public String getUserNameFromToken(String token) {
         if (!jwtProvider.validate(token))
             return null;
         String username = jwtProvider.getUserNameFromToken(token);

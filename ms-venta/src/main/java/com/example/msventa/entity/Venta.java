@@ -20,10 +20,11 @@ public class Venta {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
-    private String userId;
+    private Integer userId;
     private double total;
     private double igv;
     private double totalConIgv;
+    private String userName;
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     @JsonManagedReference

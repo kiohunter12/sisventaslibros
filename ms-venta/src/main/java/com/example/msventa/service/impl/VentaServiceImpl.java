@@ -36,6 +36,7 @@ public class VentaServiceImpl implements VentaService {
     public Venta realizarVenta(String token) {
         Integer userId = authFeign.getUserId(token).getBody();
         List<CarritoItem> items = carritoItemRepository.findByUserId(userId);
+        String userName = authFeign.getUserName(token).getBody();
 
         if (items.isEmpty()) {
             throw new RuntimeException("El carrito está vacío");
@@ -43,6 +44,7 @@ public class VentaServiceImpl implements VentaService {
 
         Venta venta = new Venta();
         venta.setUserId(userId);
+        venta.setUserName(userName);
         venta.setFecha(new Date());
 
         double total = 0;
